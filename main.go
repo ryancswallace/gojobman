@@ -21,7 +21,7 @@ THE SOFTWARE.
 */
 package main
 
-import "github.com/ryancwallace/jobman/cmd"
+import "github.com/ryancswallace/jobman/cmd"
 
 func main() {
 	cmd.Execute()

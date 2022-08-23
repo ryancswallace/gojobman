@@ -1,23 +1,33 @@
+NAME = jobman
+GO = go
+BIN = ./bin
+
+.PHONY: all
+all: format test build install
+
+.PHONY: build
 build:
-	go build -o bin/jobman main.go
+	mkdir -p $(BIN) \
+	&& $(GO) build -o $(BIN)/$(NAME) main.go
 
-exec:
-	./bin/jobman
-
-run: build exec
-
+.PHONY: install
 install:
-	go install
+	$(GO) install
 
+.PHONY: format
 format:
-	go fmt
+	$(GO) fmt
 
+.PHONY: test
 test:
-	go test
+	$(GO) test -v ./cmd -cover
 
+release: export TAG=$$(cat ./version)
 release:
 	go get -u github.com/mitchellh/gox
 	go get -u github.com/tcnksm/ghr
-	go mod vendor
 	$(GOPATH)/bin/gox -os="linux darwin windows" -arch="amd64" -output="./dist/jobman_{{.OS}}_{{.Arch}}"
-	$(GOPATH)/bin/ghr
+	git tag -a $(TAG) -m "release $(TAG)"
+	git push --tags
+	$(GOPATH)/bin/ghr -t $(GH_TOKEN_JOBMAN_RELEASE) $(TAG) dist/
+

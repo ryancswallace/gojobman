@@ -1,5 +1,5 @@
 # Jobman
+
 ```
-# docker build -t jobman .
-# docker run -it jobman
+# docker build -t jobman . && docker run -it jobman
 ```
