@@ -1,5 +1,5 @@
 /*
-Copyright © 2021 Ryan Wallace
+Copyright © 2022 Ryan Wallace
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21,8 +21,8 @@ THE SOFTWARE.
 */
 package main
 
-import "github.com/ryancswallace/jobman/cmd"
+import "github.com/ryancswallace/jobman/jobman"
 
 func main() {
-	cmd.Execute()
+	jobman.Execute()
 }

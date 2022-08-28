@@ -9,6 +9,7 @@ all: format test build install
 build:
 	mkdir -p $(BIN) \
 	&& $(GO) build -o $(BIN)/$(NAME) main.go
+.PHONY: build
 
 .PHONY: install
 install:
@@ -20,7 +21,8 @@ format:
 
 .PHONY: test
 test:
-	$(GO) test -v ./cmd -cover
+	$(GO) test -v ./... -cover \
+	&& $(GO) vet ./...
 
 release: export TAG=$$(cat ./version)
 release:
