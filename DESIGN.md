@@ -266,6 +266,7 @@
             * ineffassign100
             * gocyclo
             * misspell
+        * GH action
         * releases
             * GoReleaser
             * assets
