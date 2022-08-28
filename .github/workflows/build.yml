@@ -27,4 +27,5 @@ jobs:
           cat coverage.txt
       - name: Build
         run: |
-          go build .
+          mkdir bin
+          go build . -o ./bin/
