@@ -242,7 +242,7 @@
         * license
         * changelog
         * makefile
-        * docker
+        * dockerfile
         * .github/ISSUE_TEMPLATE/
     * man pages
     * inline comments
@@ -259,7 +259,7 @@
         * badges
             * https://goreportcard.com/
             * https://bestpractices.coreinfrastructure.org/
-    * CI
+    * CI (GH actions)
         * tests
         * linting
             * go vet
@@ -267,9 +267,9 @@
             * ineffassign100
             * gocyclo
             * misspell
-        * GH action
-        * releases
-            * GoReleaser
+        * deploy docs site
+        * publish to Dockerhub, GH packages
+        * releases (GoReleaser)
             * assets
                 * (linux|windows|darwin|freebsd).(amd64|arm64).tar.gz
                 * source.tar.gz
