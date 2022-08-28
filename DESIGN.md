@@ -265,7 +265,7 @@
             * go vet
             * go fmt
             * ineffassign100
-            * gocyclo
+            * t
             * misspell
         * deploy docs site
         * publish to Dockerhub, GH packages
