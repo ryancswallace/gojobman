@@ -21,6 +21,7 @@ to quickly create a Cobra application.`,
 }
 
 func Run(cmd *cobra.Command, args []string) {
+	// testing
 	fmt.Println("run called")
 	cmdStr := strings.Join(args, " ")
 	command := exec.Command("bash", "-c", cmdStr)
