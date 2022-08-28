@@ -79,6 +79,9 @@
         * options
             * `run` (string) (default -1) display logs from specified run number. Negative values index backwards from the last run. Value "all" displays all logs in sequence
             * `-follow`
+            * `-lines` (-1 for full)
+            * `-streams` (string) (default: "stdout,stderr")
+            * `-raw` (boolean) (default: false) Remove jobman-generated line prefixes (e.g., source stream, timestamp)
         * stdout
         * DB
         * returns

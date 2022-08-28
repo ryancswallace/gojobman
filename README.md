@@ -34,9 +34,9 @@ After submitting the `train.py` job above, use `jobman show` to display details 
 $ jobman show train.py
 ```
 
-To view a running log of the job's stdout and stderr streams, use `jobman logs`.
+To view a running log of the consolidated stdout and stderr streams of the latest job run, use `jobman logs`.
 ```sh
-jobman logs train.py -follow
+$ jobman logs train.py -follow
 ```
 
 # Documentation
