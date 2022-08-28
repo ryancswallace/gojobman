@@ -1,0 +1,4 @@
+theme: jekyll-theme-architect
+
+plugins:
+  - jekyll-sitemap
