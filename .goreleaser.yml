@@ -65,12 +65,9 @@ release:
     List of fixed issues:
     - Item 1
     - Item 2
-    ## Code changes
-    - Item 1
-    - Item 2
   footer: |
-    ## Thanks!
-    Read more on the jobman documentation site: https://ryancswallace.github.io/jobman/.
+    ## Reference
+    Read more on the [jobman documentation site](https://ryancswallace.github.io/jobman) and [jobman page](https://pkg.go.dev/github.com/ryancswallace/jobman) in the Golang reference.
 
 # brews:
 #   - tap:
