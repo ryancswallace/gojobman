@@ -4,9 +4,9 @@
     * `run` (default if no subcommand to `jobman`)
         * description: submit a job
         * args
-            * command (can be omitted iff (a) provided with job spec containing a command, (b) provided with `rerun-by-name`, or (c) provided with `rerun-by-id`)
+            * `command` (can be omitted iff (a) provided with job spec containing a command, (b) provided with `rerun-by-name`, or (c) provided with `rerun-by-id`)
         * options
-            * `name` (string) (default: "") - use `name` as the display name for job
+            * `name` (string) (default: "") - use `name` as the display name for job. Defaults to `command`
             * `group` (string) (default: "") - mark job as a member of job group `group`
 
             * `job-spec` (string) (default: "") - 
@@ -41,6 +41,7 @@
             * `retries.exponential_backoff_base` (float) (default: 1) - delay (`retries.delay` * `retries.exponential_backoff_base`^[run#]), where `run#` is indexed from 0, after finishing run `run#` to start next run. Default value of 1 results in a constant delay of `retries.delay` 
             * `retries.max_delay` (string) (default: -1) - delay no more than `reries.max_delay`. Useful for capping the delay when using exponential backoff (i.e., `retries.exponential_backoff_base` > 1). Default value of -1 indicates no maximum delay enforced
 
+            * `notify` (string) (default: "") (nonunique) - callback to invoke on success, failure, or retry
             * `notify.on-success` (string) (default: "") (nonunique) - callback to invoke on success of job
             * `notify.on-retry` (string) (default: "") (nonunique) - callback to invoke on retry of job
             * `notify.on-failure` (string) (default: "") (nonunique) - callback to invoke on failure of job
@@ -197,7 +198,7 @@
         * alerts
             * modes
                 * email
-                * text
+                * text (SMS)
                 * slack
                 * write to command line
         * script
