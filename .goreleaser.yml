@@ -69,22 +69,6 @@ release:
     ## Reference
     Read more on the [jobman documentation site](https://ryancswallace.github.io/jobman) and [jobman page](https://pkg.go.dev/github.com/ryancswallace/jobman) in the Golang reference.
 
-# brews:
-#   - tap:
-#       owner: KenanBek
-#       name: dbui
-#     name: dbui
-#     description: "Reliably run command line jobs with flexible support for scheduling, retries, timeouts, logging, and notifications."
-#     homepage: "https://github.com/kenanbek/dbui"
-#     license: "Apache 2.0"
-#     folder: Formula
-#     commit_author:
-#       name: KenanBek
-#       email: mail@kenanbek.me
-#     install: bin.install "dbui"
-#     test: |
-#       system "#{bin/dbui}"
-
 nfpms:
   - maintainer: ryancswallace
     description: "Reliably run command line jobs with flexible support for scheduling, retries, timeouts, logging, and notifications."
@@ -95,3 +79,19 @@ nfpms:
       - rpm
     replacements:
       darwin: Darwin
+
+brews:
+  - tap:
+      owner: ryancswallace
+      name: jobman
+    name: jobman
+    description: "Reliably run command line jobs with flexible support for scheduling, retries, timeouts, logging, and notifications."
+    homepage: "https://github.com/ryancswallace/jobman"
+    license: "MIT"
+    folder: Formula
+    commit_author:
+      name: ryancswallace
+      email: ryancswallace@gmail.com
+    install: bin.install "jobman"
+    test: |
+      system "#{bin/jobman}"
