@@ -1,3 +1,4 @@
+// Package jobman implements implements the jobman CLI.
 package jobman
 
 import (

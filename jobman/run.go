@@ -20,8 +20,8 @@ to quickly create a Cobra application.`,
 	Run: Run,
 }
 
+// Run is the entrypoint of the run command.
 func Run(cmd *cobra.Command, args []string) {
-	// testing
 	fmt.Println("run called")
 	cmdStr := strings.Join(args, " ")
 	command := exec.Command("bash", "-c", cmdStr)
