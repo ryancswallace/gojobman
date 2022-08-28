@@ -1,4 +1,4 @@
-name: Deploy Jekyll GitHub pages doc site
+name: Docs site
 
 on:
   push:
