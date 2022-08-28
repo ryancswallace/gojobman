@@ -18,8 +18,11 @@ Jobman automates the process of running and monitoring jobs on the command line.
 # Example
 
 # Documentation
+See the [jobman documentation site](https://ryancswallace.github.io/jobman/) for complete information on using jobman.
+
+For package implementation details, see the [jobman page](https://pkg.go.dev/github.com/ryancswallace/jobman) in the Golang reference.
 
 # Installation
 
 # Contributing
-Feature requests, bug reports, and PRs are welcome! See [CONTRIBUTING.md](https://github.com/ryancswallace/jobman/blob/main/CONTRIBUTING.md) for info on how to contribute to jobman.
+Feature requests, bug reports, and pull requests are welcome! See [CONTRIBUTING.md](https://github.com/ryancswallace/jobman/blob/main/CONTRIBUTING.md) for details on how to contribute to jobman.
