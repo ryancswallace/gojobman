@@ -14,11 +14,11 @@ Jobman automates the process of running and monitoring jobs on the command line.
 [![GoDoc](https://godoc.org/gotest.tools?status.svg)](https://pkg.go.dev/github.com/ryancswallace/jobman)
 
 # Example
-The example below uses jobman to run a Python script `train.py`. Jobman will run the program in the background immune to hangups (e.g., a SIGHUP from an SHH timeout).
+The example below uses jobman to run a Python script `train.py` in the background and immune to hangups (e.g., a SIGHUP from an SHH timeout).
 
 Jobman will ensure 60 seconds have passed *and* that the file `data.csv` exists before starting the program. If those conditions haven't been met by 5:00PM on March 5, 2032, jobman will abort the job.
 
-Jobman will retry the script up to five times until there's one successful run, defined as an exit code of `0` or `42`, waiting ten seconds between retries.
+Jobman will retry the program up to five times until there's one successful run, defined as an exit code of `0` or `42`, waiting ten seconds between retries.
 
 If the job succeeds, jobman will send a notification email. If the job fails, jobman will send an SMS message.
 ```sh
