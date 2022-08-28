@@ -1,5 +1,4 @@
 bin/
-vendor/
 dist/
 .vscode/
 *.code-workspace

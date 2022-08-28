@@ -247,6 +247,7 @@
     * man pages
     * inline comments
     * webpage
+    * social preview image
     * testing
         * unit tests
         * functional tests
