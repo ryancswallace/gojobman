@@ -41,6 +41,10 @@
             * `retries.exponential_backoff_base` (float) (default: 1) - delay (`retries.delay` * `retries.exponential_backoff_base`^[run#]), where `run#` is indexed from 0, after finishing run `run#` to start next run. Default value of 1 results in a constant delay of `retries.delay` 
             * `retries.max_delay` (string) (default: -1) - delay no more than `reries.max_delay`. Useful for capping the delay when using exponential backoff (i.e., `retries.exponential_backoff_base` > 1). Default value of -1 indicates no maximum delay enforced
 
+            * `timeout`
+            * `timeout.job`
+            * `timeout.run`
+
             * `notify` (string) (default: "") (nonunique) - callback to invoke on success, failure, or retry
             * `notify.on-success` (string) (default: "") (nonunique) - callback to invoke on success of job
             * `notify.on-retry` (string) (default: "") (nonunique) - callback to invoke on retry of job

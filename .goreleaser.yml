@@ -1,0 +1,100 @@
+project_name: jobman
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - "386"
+    main: ./main.go
+    ldflags: -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
+    binary: jobman
+
+archives:
+  - name_template: '{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}'
+    replacements:
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+      386: i386
+      amd64: x86_64
+
+snapshot:
+  name_template: SNAPSHOT-{{ .Commit }}
+checksum:
+  name_template: '{{ .ProjectName }}_{{ .Version }}_checksums.txt'
+
+signs:
+  - cmd: gpg
+    args:
+      - --output
+      - $signature
+      - --detach-sig
+      - $artifact
+    signature: ${artifact}.sig
+    artifacts: none
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^assets:'
+      - '^docs:'
+      - '^tests:'
+      - '^site:'
+
+release:
+  github:
+    owner: ryancswallace
+    name: jobman
+  draft: true
+  prerelease: auto
+  discussion_category_name: General
+  header: |
+    ## Features
+    List of newly introduced features:
+    - Item 1
+    - Item 2
+    ## Bug fixes
+    List of fixed issues:
+    - Item 1
+    - Item 2
+    ## Code changes
+    - Item 1
+    - Item 2
+  footer: |
+    ## Thanks!
+    Read more on the jobman documentation site: https://ryancswallace.github.io/jobman/.
+
+# brews:
+#   - tap:
+#       owner: KenanBek
+#       name: dbui
+#     name: dbui
+#     description: "Reliably run command line jobs with flexible support for scheduling, retries, timeouts, logging, and notifications."
+#     homepage: "https://github.com/kenanbek/dbui"
+#     license: "Apache 2.0"
+#     folder: Formula
+#     commit_author:
+#       name: KenanBek
+#       email: mail@kenanbek.me
+#     install: bin.install "dbui"
+#     test: |
+#       system "#{bin/dbui}"
+
+nfpms:
+  - maintainer: ryancswallace
+    description: "Reliably run command line jobs with flexible support for scheduling, retries, timeouts, logging, and notifications."
+    homepage: "https://github.com/ryancswallace/jobman"
+    license: "MIT"
+    formats:
+      - deb
+      - rpm
+    replacements:
+      darwin: Darwin

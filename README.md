@@ -3,6 +3,7 @@
 Jobman automates the process of running and monitoring jobs on the command line. Jobman supports
 * running commands in the background immune to hangups
 * retrying commands
+* aborting commands after a timeout period
 * logging command output
 * sending notifications on command success or failure
 * delaying command execution for a specified time or event
@@ -47,6 +48,9 @@ For package implementation details, see the [jobman page](https://pkg.go.dev/git
 # Installation
 
 # Alternatives
+https://github.com/kadwanev/retry
+https://github.com/linyows/go-retry
+https://github.com/martinezdelariva/retry
 
 # Contributing
 Feature requests, bug reports, and pull requests are welcome! See [CONTRIBUTING.md](https://github.com/ryancswallace/jobman/blob/main/CONTRIBUTING.md) for details on how to contribute to jobman.
