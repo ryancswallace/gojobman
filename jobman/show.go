@@ -6,7 +6,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// showCmd represents the show command
 var showCmd = &cobra.Command{
 	Use:   "show",
 	Short: "A brief description of your command",

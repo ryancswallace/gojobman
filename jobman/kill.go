@@ -6,7 +6,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// killCmd represents the kill command
 var killCmd = &cobra.Command{
 	Use:   "kill",
 	Short: "A brief description of your command",

@@ -10,9 +10,9 @@ linters:
     - gosimple
     - prealloc
     - unused
-    - deadcode
     - govet
-    - varcheck
+    - staticcheck
+    - revive
     - ineffassign
     - whitespace
     - godot

@@ -6,7 +6,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// cleanCmd represents the clean command
 var cleanCmd = &cobra.Command{
 	Use:   "clean",
 	Short: "A brief description of your command",
