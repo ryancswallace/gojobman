@@ -15,6 +15,8 @@ linters:
     - ineffassign
     - whitespace
     - godot
+    - gocyclo
+    - misspell
 
 issues:
   exclude-use-default: false
