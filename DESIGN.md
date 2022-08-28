@@ -267,6 +267,7 @@
             * gocyclo
             * misspell
         * releases
+            * GoReleaser
             * assets
                 * (linux|windows|darwin|freebsd).(amd64|arm64).tar.gz
                 * source.tar.gz
