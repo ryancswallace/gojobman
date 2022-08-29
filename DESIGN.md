@@ -247,7 +247,9 @@
         * intercept signals (e.g., `HUP`)
     * shell completions
 * best practices
-    * coordinate version number via VERSION (`grep -r -I '1\.15`)
+    * updates
+        * coordinate Golang and jobman version number (via VERSION?) (`grep -r -I '1\.15`)
+        * copyright date (`grep -r -I '© 2021-'`)
     * files
         * readme
         * contributing

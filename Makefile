@@ -1,7 +1,12 @@
-NAME = jobman
-GO = go
+PROJECT = jobman
+
 BIN = ./bin
 COVREPORT = coverage.txt
+
+GO = go
+LINTER = golangci-lint
+DOCKER = docker
+
 
 .PHONY: all
 all: format test build install
@@ -22,13 +27,13 @@ e2etest:
 perftest:
 	true  # TODO
 
-$(BIN)/golangci-lint:
+$(BIN)/$(LINTER):
 	wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.49.0
-	$(BIN)/golangci-lint --version
+	$(BIN)/$(LINTER) --version
 
 .PHONY: lint
-lint: $(BIN)/golangci-lint
-	golangci-lint run
+lint: $(BIN)/$(LINTER)
+	$(LINTER) run
 
 .PHONY: test
 test: unittest e2etest perftest lint
@@ -49,4 +54,4 @@ clean:
 
 .PHONY: docker-image
 docker-image:
-	docker build -t $(NAME) .
+	$(DOCKER) build -t $(PROJECT) .

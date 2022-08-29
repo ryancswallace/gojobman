@@ -15,7 +15,7 @@ Jobman automates the process of running and monitoring jobs on the command line.
 [![GoDoc](https://godoc.org/gotest.tools?status.svg)](https://pkg.go.dev/github.com/ryancswallace/jobman)
 
 # Documentation
-:book: **Visit the [jobman documentation site](https://ryancswallace.github.io/jobman/) for complete information on using jobman.**
+**Visit the :book: [jobman documentation site](https://ryancswallace.github.io/jobman/) :book: for complete information on using jobman.**
 
 For package implementation details, see the [jobman page](https://pkg.go.dev/github.com/ryancswallace/jobman) in the Golang reference.
 
@@ -47,7 +47,7 @@ jobman logs train.py -follow
 
 # Installation
 
-There are multiple ways to install jobman. The recommended method is to use the RPM or deb package if applicable or a precompiled binary otherwise.
+There are multiple ways to install jobman. The recommended method is to use the RPM or deb package, if applicable, or a precompiled binary otherwise.
 
 ### Package manager packages
 Jobman is available via RPM and deb packages as `jobman_<version>-_linux_(amd64|386).(rpm|deb)`. Download packages for the latest jobman version from the [latest releases page](https://github.com/ryancswallace/jobman/releases/latest) on the GitHub repository.
@@ -86,7 +86,7 @@ The Makefile provides several other targets for convenience while developing, in
 * *build*: builds the `jobman` binary for the current platform
 
 # Alternatives
-Jobman aims to be reliable and fully-featured. It operates *without* requiring a system-level daemon process.
+Jobman aims to be reliable and fully-featured. It operates *without* requiring a system service/daemon for orchestration.
 
 cron
 Airflow/prefect/dagster
