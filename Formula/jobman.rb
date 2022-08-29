@@ -5,12 +5,12 @@
 class Jobman < Formula
   desc "Reliably run command line jobs with flexible support for scheduling, retries, timeouts, logging, and notifications."
   homepage "https://github.com/ryancswallace/jobman"
-  version "0.0.3-alpha"
+  version "0.0.4-alpha"
   license "MIT"
 
   on_macos do
-    url "https://github.com/ryancswallace/jobman/releases/download/v0.0.3-alpha/jobman_Darwin_x86_64.tar.gz"
-    sha256 "055e94923b389061285c45abb472138ec2d378360057eb74701d5d6b76cccbb4"
+    url "https://github.com/ryancswallace/jobman/releases/download/v0.0.4-alpha/jobman_0.0.4-alpha_Darwin_x86_64.tar.gz"
+    sha256 "5faac5308c7536730b0d914bf3fc400ed81a802fd751a50947b901351b1ebea5"
 
     def install
       bin.install "jobman"
@@ -29,8 +29,8 @@ class Jobman < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/ryancswallace/jobman/releases/download/v0.0.3-alpha/jobman_Linux_x86_64.tar.gz"
-      sha256 "a94752c9cb05205af4e3a17cb0b25afa3cd560164f977213fd9f56bdc718ecce"
+      url "https://github.com/ryancswallace/jobman/releases/download/v0.0.4-alpha/jobman_0.0.4-alpha_Linux_x86_64.tar.gz"
+      sha256 "79cd38d7db4c92e1633a640ba8e28616c62b75ab4aec9a12998d4198a709cb8a"
 
       def install
         bin.install "jobman"
