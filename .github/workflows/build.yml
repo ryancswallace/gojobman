@@ -24,11 +24,11 @@ jobs:
 
       - name: Test
         run: |
-          go test -v -race -coverprofile=coverage.txt -covermode=atomic ./...
+          go test -v -race -cover -coverprofile=coverage.txt -covermode=atomic ./...
           bash <(curl -s https://codecov.io/bash) -s .
           cat coverage.txt
 
       - name: Build
         run: |
-          mkdir bin
+          mkdir -p bin
           go build -o ./bin/ .

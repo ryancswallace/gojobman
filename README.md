@@ -14,6 +14,12 @@ Jobman automates the process of running and monitoring jobs on the command line.
 [![Docs site](https://img.shields.io/badge/docs-GitHub_Pages-blue)](https://ryancswallace.github.io/jobman/)
 [![GoDoc](https://godoc.org/gotest.tools?status.svg)](https://pkg.go.dev/github.com/ryancswallace/jobman)
 
+
+# Documentation
+**Visit the [jobman documentation site](https://ryancswallace.github.io/jobman/) for complete information on using jobman.**
+
+For package implementation details, see the [jobman page](https://pkg.go.dev/github.com/ryancswallace/jobman) in the Golang reference.
+
 # Example
 The example below uses jobman to run a Python script `train.py` in the background and immune to hangups (e.g., a SIGHUP from an SHH timeout).
 
@@ -22,36 +28,54 @@ Jobman will ensure 60 seconds have passed *and* that the file `data.csv` exists 
 Jobman will retry the program up to five times until there's one successful run, defined as an exit code of `0` or `42`, waiting ten seconds between retries.
 
 If the job succeeds, jobman will send a notification email. If the job fails, jobman will send an SMS message.
-```sh
-$ jobman \
+```bash
+jobman \
     -wait.timedelta 60s -wait.file data.csv -wait.abort-datetime "2032-03-05T17:00:00" \
     -retries.num-successes 1 -retries.num-runs 5 -retries.success-codes 0,42 -retries.delay 10s \
     -notify.on-success my-email -notify.on-failure my-cell \
     train.py
 ```
 
-After submitting the `train.py` job above, use `jobman show` to display details on job progress.
-```sh
-$ jobman show train.py
+After submitting the `train.py` job above, use `jobman show` to display details on job progress:
+```bash
+jobman show train.py
 ```
 
-To view a running log of the consolidated stdout and stderr streams of the latest job run, use `jobman logs`.
-```sh
-$ jobman logs train.py -follow
+To view a running log of the consolidated stdout and stderr streams of the latest run of the `train.py` job, use `jobman logs`:
+```bash
+jobman logs train.py -follow
 ```
-
-# Documentation
-See the [jobman documentation site](https://ryancswallace.github.io/jobman/) for complete information on using jobman.
-
-For package implementation details, see the [jobman page](https://pkg.go.dev/github.com/ryancswallace/jobman) in the Golang reference.
 
 # Installation
 
+There are multiple ways to install jobman. The recommended method is to use the precompiled binary from the latest production release.
+
+### Package manager package
+Jobman is available via an RPM and deb packages as `jobman_<version>-_linux_(amd64|386).(rpm|deb)`.
+
 ### Precompiled binary
+Precompiled binaries for released versions are available on the [releases](https://github.com/ryancswallace/jobman/releases) page of the GitHub repository. Binaries are provided for Linux, MacOS, and Windows as `jobman_(Linux|Darwin|Windows)_<(x86_64|i386)>.tar.gz`.
 
 ### Docker image
 
 ### Build from source
+To build jobman from source code requires [Go version 1.15 or greater](https://golang.org/doc/install).
+
+Start by cloning the repository:
+```bash
+git clone https://github.com/ryancswallace/jobman.git
+cd jobman
+```
+
+Then build and install the jobman binary under your `GOPATH` using make:
+```bash
+make install
+```
+
+The Makefile provides several other targets for convenience while developing:
+* *format*: formats the source code
+* *test*: runs the jobman test suite, including unit tests, end-to-end tests, performance tests, and linters
+* *build*: builds the `jobman` binary for the current platform
 
 # Alternatives
 Jobman aims to be reliable and fully-featured. It operates *without* requiring a system-level daemon process.
