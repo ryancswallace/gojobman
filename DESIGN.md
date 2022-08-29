@@ -248,8 +248,13 @@
     * shell completions
 * best practices
     * updates
-        * coordinate Golang and jobman version number (via VERSION?) (`grep -r -I '1\.15`)
-        * copyright date (`grep -r -I '© 2021-'`)
+        * coordinate Go and jobman version number (via VERSION?) (`grep -r -I '1\.15`)
+        * copyright date
+            ```sh
+            START_YEAR=2021
+            CURRENT_YEAR=$(date '+%Y')
+            grep -rl --exclude-dir=.git "© $START_YEAR-" . | xargs sed -i "s/© $START_YEAR-[0-9]\{4\}/© $START_YEAR-$CURRENT_YEAR/g"
+            ```
     * files
         * readme
         * contributing

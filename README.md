@@ -17,7 +17,7 @@ Jobman automates the process of running and monitoring jobs on the command line.
 # Documentation
 **Visit the :book: [jobman documentation site](https://ryancswallace.github.io/jobman/) :book: for complete information on using jobman.**
 
-For package implementation details, see the [jobman page](https://pkg.go.dev/github.com/ryancswallace/jobman) in the Golang reference.
+For package implementation details, see the [jobman page](https://pkg.go.dev/github.com/ryancswallace/jobman) in the Go reference.
 
 # Example
 The example below uses jobman to run a Python script `train.py` in the background and immune to hangups (e.g., a SIGHUP from an SHH timeout).

@@ -1,6 +1,7 @@
 PROJECT = jobman
 
 BIN = ./bin
+HOOKS = ./hooks
 COVREPORT = coverage.txt
 
 GO = go
@@ -34,6 +35,7 @@ $(BIN)/$(LINTER):
 .PHONY: lint
 lint: $(BIN)/$(LINTER)
 	$(LINTER) run
+	run-parts $(HOOKS)
 
 .PHONY: test
 test: unittest e2etest perftest lint
