@@ -247,7 +247,7 @@
         * intercept signals (e.g., `HUP`)
     * shell completions
 * best practices
-    * coordinate version number via VERSION
+    * coordinate version number via VERSION (`grep -r -I '1\.15`)
     * files
         * readme
         * contributing
