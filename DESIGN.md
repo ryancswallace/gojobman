@@ -13,6 +13,8 @@
             * `rerun-by-name` (string) (default: "") - rerun the job named `rerun-by-name`. If multiple jobs with this name exist, choose among them the job with the latest start datetime
             * `rerun-by-id` (string) (default: "") - rerun job with id `rerun-by-id`
 
+            * `stop-signal`
+
             * `wait.datetime` (timestamp) (default: "") - do not run before `wait.datetime`
             * `wait.timedelta` (timedelta) (default: "") - do not run before `wait.timedelta` after job submitted
             * `wait.file` (string) (default: "") (nonunique) - do not run unless `wait.file` exists
@@ -38,8 +40,9 @@
             * `retries.success-codes` (string) (default: "0") - comma-separated list of exit codes that indicate a successful run
             * `retries.failure-codes` (string) (default: "") - comma-separated list of exit codes that indicate a failed run
             * `retries.delay` (string) (default: `0s`) - delay after finishing run to start next run
-            * `retries.exponential_backoff_base` (float) (default: 1) - delay (`retries.delay` * `retries.exponential_backoff_base`^[run#]), where `run#` is indexed from 0, after finishing run `run#` to start next run. Default value of 1 results in a constant delay of `retries.delay` 
-            * `retries.max_delay` (string) (default: -1) - delay no more than `reries.max_delay`. Useful for capping the delay when using exponential backoff (i.e., `retries.exponential_backoff_base` > 1). Default value of -1 indicates no maximum delay enforced
+            * `retries.jitter-range` (string) (default: `0s`) - add jitter distributed Unif(-`retries.jitter-range` / 2, `retries.jitter-range` / 2) to retry delay. Actual delay is distributed max(0, Unif(`retries.delay` - (`retries.jitter-range` / 2), `retries.delay` + (`retries.jitter-range` / 2)))
+            * `retries.exponential-backoff-base` (float) (default: 1) - delay (`retries.delay` * `retries.eexponential-backoff-base`^[run#]), where `run#` is indexed from 0, after finishing run `run#` to start next run. Default value of 1 results in a constant delay of `retries.delay` 
+            * `retries.max-delay` (string) (default: -1) - delay no more than `reries.max-delay`. Useful for capping the delay when using exponential backoff (i.e., `retries.exponential-backoff-base` > 1). Default value of -1 indicates no maximum delay enforced
 
             * `timeout`
             * `timeout.job`

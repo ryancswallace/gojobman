@@ -47,7 +47,18 @@ For package implementation details, see the [jobman page](https://pkg.go.dev/git
 
 # Installation
 
+## Precompiled binary
+
+## Docker image
+
+## Build from source
+
 # Alternatives
+Jobman aims to be reliable and fully-featured. It operates *without* requiring a system-level daemon process.
+
+cron
+Airflow/prefect/dagster
+supervisord
 https://github.com/kadwanev/retry
 https://github.com/linyows/go-retry
 https://github.com/martinezdelariva/retry
