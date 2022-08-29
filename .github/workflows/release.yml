@@ -4,6 +4,11 @@ on:
   push:
     tags: "*"
 
+# limits to one concurrent release
+concurrency:
+  group: "release"
+  cancel-in-progress: true
+
 jobs:
   goreleaser:
     runs-on: ubuntu-latest

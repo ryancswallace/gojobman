@@ -48,18 +48,18 @@ jobman logs train.py -follow
 
 # Installation
 
-There are multiple ways to install jobman. The recommended method is to use the precompiled binary from the latest production release.
+There are multiple ways to install jobman. The recommended method is to use the RPM or deb package if applicable or a precompiled binary otherwise.
 
-### Package manager package
-Jobman is available via an RPM and deb packages as `jobman_<version>-_linux_(amd64|386).(rpm|deb)`.
+### Package manager packages
+Jobman is available via RPM and deb packages as `jobman_<version>-_linux_(amd64|386).(rpm|deb)`. Download packages for the latest jobman version from the [latest releases page](https://github.com/ryancswallace/jobman/releases/latest) on the GitHub repository.
 
-### Precompiled binary
-Precompiled binaries for released versions are available on the [releases](https://github.com/ryancswallace/jobman/releases) page of the GitHub repository. Binaries are provided for Linux, MacOS, and Windows as `jobman_(Linux|Darwin|Windows)_<(x86_64|i386)>.tar.gz`.
+### Precompiled binaries
+Precompiled binaries are available for Linux, MacOS, and Windows as `jobman_(Linux|Darwin|Windows)_<(x86_64|i386)>.tar.gz`. Download binaries for the latest jobman version from the [latest releases page](https://github.com/ryancswallace/jobman/releases/latest) on the GitHub repository.
 
-### Docker image
+### Docker images
 
 ### Build from source
-To build jobman from source code requires [Go version 1.15 or greater](https://golang.org/doc/install).
+Building jobman from source code requires [Go](https://golang.org/doc/install) version 1.15 or greater.
 
 Start by cloning the repository:
 ```bash

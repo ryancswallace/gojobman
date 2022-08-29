@@ -240,7 +240,7 @@
         * document database (e.g., MongoDB, DynamoDB)
 * implementation
     * UUID generated for job
-    * heartbeat writing to DB to indicate liveness
+    * heartbeat writing to latest run in DB to indicate liveness
     * `jobman run` command returns once job is `pending`
     * backgrounding
         * handle stream redirects
@@ -250,6 +250,7 @@
     * files
         * readme
         * contributing
+        * release
         * license
         * changelog
         * makefile
@@ -261,12 +262,13 @@
     * social preview image
     * testing
         * unit tests
-        * functional tests
+        * end-to-end tests
+        * performance tests
     * repo
         * tags
         * description
         * sponsor
-        * logo (mark binary in Git)
+        * logo
         * badges
             * https://goreportcard.com/
             * https://bestpractices.coreinfrastructure.org/
@@ -276,13 +278,12 @@
             * go vet
             * go fmt
             * ineffassign100
-            * t
             * misspell
         * deploy docs site
         * publish to Dockerhub, GH packages
         * releases (GoReleaser)
             * assets
-                * (linux|windows|darwin|freebsd).(amd64|arm64).tar.gz
+                * (linux|windows|darwin|freebsd).(amd64|i386).tar.gz
                 * source.tar.gz
                 * .rpm
                 * .deb
