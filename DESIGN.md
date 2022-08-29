@@ -247,6 +247,7 @@
         * intercept signals (e.g., `HUP`)
     * shell completions
 * best practices
+    * coordinate version number via VERSION
     * files
         * readme
         * contributing

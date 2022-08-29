@@ -16,7 +16,7 @@ Jobman automates the process of running and monitoring jobs on the command line.
 
 
 # Documentation
-**Visit the [jobman documentation site](https://ryancswallace.github.io/jobman/) for complete information on using jobman.**
+:book: **Visit the [jobman documentation site](https://ryancswallace.github.io/jobman/) for complete information on using jobman.**
 
 For package implementation details, see the [jobman page](https://pkg.go.dev/github.com/ryancswallace/jobman) in the Golang reference.
 
@@ -56,7 +56,7 @@ Jobman is available via RPM and deb packages as `jobman_<version>-_linux_(amd64|
 ### Precompiled binaries
 Precompiled binaries are available for Linux, MacOS, and Windows as `jobman_(Linux|Darwin|Windows)_<(x86_64|i386)>.tar.gz`. Download binaries for the latest jobman version from the [latest releases page](https://github.com/ryancswallace/jobman/releases/latest) on the GitHub repository.
 
-### Docker images
+### Docker image
 
 ### Build from source
 Building jobman from source code requires [Go](https://golang.org/doc/install) version 1.15 or greater.
