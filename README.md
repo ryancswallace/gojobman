@@ -14,7 +14,6 @@ Jobman automates the process of running and monitoring jobs on the command line.
 [![Docs site](https://img.shields.io/badge/docs-GitHub_Pages-blue)](https://ryancswallace.github.io/jobman/)
 [![GoDoc](https://godoc.org/gotest.tools?status.svg)](https://pkg.go.dev/github.com/ryancswallace/jobman)
 
-
 # Documentation
 :book: **Visit the [jobman documentation site](https://ryancswallace.github.io/jobman/) for complete information on using jobman.**
 
@@ -57,6 +56,15 @@ Jobman is available via RPM and deb packages as `jobman_<version>-_linux_(amd64|
 Precompiled binaries are available for Linux, MacOS, and Windows as `jobman_(Linux|Darwin|Windows)_<(x86_64|i386)>.tar.gz`. Download binaries for the latest jobman version from the [latest releases page](https://github.com/ryancswallace/jobman/releases/latest) on the GitHub repository.
 
 ### Docker image
+Use `docker run` to pull and run the latest jobman Docker image from Docker Hub:
+```bash
+docker run -it jobman
+```
+
+To build the Docker image locally instead of pulling from Docker Hub, use the `docker-image` make target:
+```bash
+make docker-image
+```
 
 ### Build from source
 Building jobman from source code requires [Go](https://golang.org/doc/install) version 1.15 or greater.
@@ -72,7 +80,7 @@ Then build and install the jobman binary under your `GOPATH` using make:
 make install
 ```
 
-The Makefile provides several other targets for convenience while developing:
+The Makefile provides several other targets for convenience while developing, including:
 * *format*: formats the source code
 * *test*: runs the jobman test suite, including unit tests, end-to-end tests, performance tests, and linters
 * *build*: builds the `jobman` binary for the current platform

@@ -1,6 +1,7 @@
 NAME = jobman
 GO = go
 BIN = ./bin
+COVREPORT = coverage.txt
 
 .PHONY: all
 all: format test build install
@@ -11,7 +12,7 @@ format:
 
 .PHONY: unittest
 unittest:
-	$(GO) test -v -race -cover -coverprofile=coverage.txt -covermode=atomic ./...
+	$(GO) test -v -race -cover -coverprofile=$(COVREPORT) -covermode=atomic ./...
 
 .PHONY: e2etest
 e2etest:
@@ -42,12 +43,10 @@ build:
 install:
 	$(GO) install
 
-release: export TAG=$$(cat ./version)
-release:
-	go get -u github.com/mitchellh/gox
-	go get -u github.com/tcnksm/ghr
-	$(GOPATH)/bin/gox -os="linux darwin windows" -arch="amd64" -output="./dist/jobman_{{.OS}}_{{.Arch}}"
-	git tag -a $(TAG) -m "release $(TAG)"
-	git push --tags
-	$(GOPATH)/bin/ghr -t $(GH_TOKEN_JOBMAN_RELEASE) $(TAG) dist/
+.PHONY: clean
+clean:
+	rm -rf $(COVREPORT) $(BIN)
 
+.PHONY: docker-image
+docker-image:
+	docker build -t $(NAME) .
