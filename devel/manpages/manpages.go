@@ -1,3 +1,4 @@
+// Package jobman generates man pages for jobman.
 package main
 
 import "fmt"

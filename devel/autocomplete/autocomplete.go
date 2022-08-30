@@ -1,3 +1,4 @@
+// Package autocomplete generates shell autocomplete scripts for jobman.
 package main
 
 import "fmt"
