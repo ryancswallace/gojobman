@@ -109,7 +109,6 @@ brews:
     commit_author:
       name: Ryan Wallace
       email: ryancswallace@gmail.com
-    install: bin.install "jobman"
     install: |
       bin.install "jobman"
       man1.install Dir["docs/manpage/jobman.1"]
