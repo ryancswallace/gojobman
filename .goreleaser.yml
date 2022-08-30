@@ -99,7 +99,7 @@ nfpms:
 
 brews:
   - tap:
-      owner: ryancswallace <ryancswallace@gmail.com>
+      owner: ryancswallace
       name: jobman
     name: jobman
     description: "A command line job manager with flexible support for retries, timeouts, logging, notifications, and more."
