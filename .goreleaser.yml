@@ -86,11 +86,12 @@ nfpms:
       - apk
     replacements:
       darwin: Darwin
+      linux: Linux
     contents:
       - src: etc/jobman/jobman.yml
         dst: /etc/jobman/jobman.yml
         type: config
-      - src: docs/manpage/jobman.1
+      - src: docs/manpage/jobman*.1
         dst: /usr/share/man/man1
       - src: docs/completions/bash/jobman
         dst: /usr/share/bash-completion/completions/jobman
