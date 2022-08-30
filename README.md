@@ -46,7 +46,6 @@ jobman logs train.py -follow
 ```
 
 # Installation
-
 There are multiple ways to install jobman. The recommended method is to use the RPM, deb, or apk package, if applicable, or a precompiled binary otherwise.
 
 ### Package manager packages

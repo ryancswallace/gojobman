@@ -298,7 +298,13 @@
                 * .rpm
                 * .deb
             * Full Changelog: v4.6.1...v4.6.2
-
+* doc site
+    * installing
+        * Homebrew
+            ```
+            brew tap ryancswallace/jobman https://github.com/ryancswallace/jobman
+            brew install jobman
+            ```
 
 
 * `.db/`

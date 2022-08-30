@@ -80,13 +80,13 @@ $(MANPAGE):
 
 .PHONY: gen-manpage
 gen-manpage: $(MANPAGE)
-	date >> $(MANPAGE)/jobman.1  # TODO
+	$(GO) run devel/manpages/manpages.go
 
 .PHONY: gen-completions
 gen-completions:
 	for CMPSHELL in bash zsh powershell; do \
 		mkdir -p $(COMPLETIONS)/$$CMPSHELL \
-		&& date >> $(COMPLETIONS)/$$CMPSHELL/jobman; \
+		&& $(GO) run devel/autocomplete/autocomplete.go; \
 	done
 
 .PHONY: gen-all
