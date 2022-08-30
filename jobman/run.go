@@ -30,7 +30,7 @@ func Run(cmd *cobra.Command, args []string) {
 }
 
 func init() {
-	rootcmd.AddCommand(runCmd)
+	JobmanRootCmd.AddCommand(runCmd)
 
 	// Here you will define your flags and configuration settings.
 

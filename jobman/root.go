@@ -13,7 +13,7 @@ import (
 
 var cfgFile string
 
-var rootcmd = &cobra.Command{
+var JobmanRootCmd = &cobra.Command{
 	Use:   "jobman",
 	Short: "A brief description of your application",
 	Long: `A longer description that spans multiple lines and likely contains
@@ -28,7 +28,7 @@ to quickly create a Cobra application.`,
 
 // Execute adds all child commands to the root command and sets flags appropriately.
 func Execute() {
-	if err := rootcmd.Execute(); err != nil {
+	if err := JobmanRootCmd.Execute(); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
@@ -37,14 +37,14 @@ func Execute() {
 func init() {
 	cobra.OnInitialize(initConfig)
 
-	// rootcmd.PersistentFlags().StringVar(&cfgFile, "user-config-file", "", "user-level config file path (default is $HOME/.jobman.yaml)")
-	// rootcmd.PersistentFlags().StringVar(&cfgFile, "project-config-file", "", "project-level config file path (default is ./.jobman.yaml)")
-	// rootcmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.jobman.yaml)")
-	// rootcmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.jobman.yaml)")
-	// rootcmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.jobman.yaml)")
-	// rootcmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.jobman.yaml)")
+	// JobmanRootCmd.PersistentFlags().StringVar(&cfgFile, "user-config-file", "", "user-level config file path (default is $HOME/.jobman.yaml)")
+	// JobmanRootCmd.PersistentFlags().StringVar(&cfgFile, "project-config-file", "", "project-level config file path (default is ./.jobman.yaml)")
+	// JobmanRootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.jobman.yaml)")
+	// JobmanRootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.jobman.yaml)")
+	// JobmanRootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.jobman.yaml)")
+	// JobmanRootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.jobman.yaml)")
 
-	// rootcmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// JobmanRootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 
 	// *`-log-level`
 	// *`-verbose`

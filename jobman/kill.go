@@ -21,7 +21,7 @@ to quickly create a Cobra application.`,
 }
 
 func init() {
-	rootcmd.AddCommand(killCmd)
+	JobmanRootCmd.AddCommand(killCmd)
 
 	// Here you will define your flags and configuration settings.
 
