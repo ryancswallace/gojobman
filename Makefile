@@ -2,6 +2,9 @@ PROJECT = jobman
 
 BIN = ./bin
 HOOKS = ./hooks
+DOCS = ./docs
+MANPAGE = $(DOCS)/manpage
+COMPLETIONS = $(DOCS)/completions
 COVREPORT = coverage.txt
 
 GO = go
@@ -10,12 +13,11 @@ DOCKER = docker
 
 
 .PHONY: all
-all: format test build install
+all: format update-all test build-all install
 
-.PHONY: format
-format:
-	$(GO) fmt
-
+###
+### Testing
+###
 .PHONY: unittest
 unittest:
 	$(GO) test -v -race -cover -coverprofile=$(COVREPORT) -covermode=atomic ./...
@@ -35,25 +37,66 @@ $(BIN)/$(LINTER):
 .PHONY: lint
 lint: $(BIN)/$(LINTER)
 	$(LINTER) run
-	run-parts $(HOOKS)
 
 .PHONY: test
 test: unittest e2etest perftest lint
 
+###
+### Building
+###
 .PHONY: build
 build:
 	mkdir -p $(BIN) \
 	&& $(GO) build -o $(BIN)/ .
 .PHONY: build
 
+.PHONY: docker-image
+docker-image:
+	$(DOCKER) build -t $(PROJECT) .
+
+.PHONY: build-all
+build-all: build docker-image
+
 .PHONY: install
 install:
 	$(GO) install
 
+###
+### Autoformatting and updating
+###
+.PHONY: format
+format:
+	$(GO) fmt
+
+.PHONY: update-all
+update-all:
+	run-parts $(HOOKS)
+
+###
+### Autogeneration
+###
+$(MANPAGE):
+	mkdir -p $@
+
+.PHONY: gen-manpage
+gen-manpage: $(MANPAGE)
+	date >> $(MANPAGE)/jobman.1  # TODO
+
+.PHONY: gen-completions
+gen-completions:
+	for CMPSHELL in bash zsh powershell; do \
+		mkdir -p $(COMPLETIONS)/$$CMPSHELL \
+		&& date >> $(COMPLETIONS)/$$CMPSHELL/jobman; \
+	done
+
+.PHONY: gen-all
+gen-all: gen-manpage gen-completions
+
+###
+### Cleanup
+###
 .PHONY: clean
 clean:
 	rm -rf $(COVREPORT) $(BIN)
-
-.PHONY: docker-image
-docker-image:
-	$(DOCKER) build -t $(PROJECT) .
+	rm $(MANPAGE)/$(PROJECT).*
+	rm $(COMPLETIONS)/**/*jobman

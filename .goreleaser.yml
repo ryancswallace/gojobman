@@ -3,6 +3,7 @@ project_name: jobman
 before:
   hooks:
     - go mod tidy
+    - make gen-manpage gen-completions
 
 builds:
   - goos:
@@ -15,15 +16,6 @@ builds:
     main: ./main.go
     ldflags: -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
     binary: jobman
-
-archives:
-  - name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
-    replacements:
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
-      386: i386
-      amd64: x86_64
 
 snapshot:
   name_template: SNAPSHOT-{{ .Commit }}
@@ -69,29 +61,59 @@ release:
     ## Reference
     Read more on the [jobman documentation site](https://ryancswallace.github.io/jobman) and [jobman page](https://pkg.go.dev/github.com/ryancswallace/jobman) in the Golang reference.
 
+archives:
+  - name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
+    replacements:
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+      386: i386
+      amd64: x86_64
+    files:
+      - LICENSE
+      - etc/jobman/jobman.yml
+      - docs/manpage/jobman.*
+      - docs/completions/**/jobman
+
 nfpms:
-  - maintainer: ryancswallace
-    description: "Reliably run command line jobs with flexible support for scheduling, retries, timeouts, logging, and notifications."
+  - maintainer: ryancswallace <ryancswallace@gmail.com>
+    description: "A command line job manager with flexible support for retries, timeouts, logging, notifications, and more."
     homepage: "https://github.com/ryancswallace/jobman"
     license: "MIT"
     formats:
       - deb
       - rpm
+      - apk
     replacements:
       darwin: Darwin
+    contents:
+      - src: etc/jobman/jobman.yml
+        dst: /etc/jobman/jobman.yml
+        type: config
+      - src: docs/manpage/jobman.1
+        dst: /usr/share/man/man1
+      - src: docs/completions/bash/jobman
+        dst: /usr/share/bash-completion/completions/jobman
+      - src: docs/completions/zsh/jobman
+        dst: /usr/share/zsh/vendor-completions/_jobman
 
 brews:
   - tap:
-      owner: ryancswallace
+      owner: ryancswallace <ryancswallace@gmail.com>
       name: jobman
     name: jobman
-    description: "Reliably run command line jobs with flexible support for scheduling, retries, timeouts, logging, and notifications."
+    description: "A command line job manager with flexible support for retries, timeouts, logging, notifications, and more."
     homepage: "https://github.com/ryancswallace/jobman"
     license: "MIT"
-    folder: Formula
+    folder: formula
     commit_author:
-      name: ryancswallace
+      name: Ryan Wallace
       email: ryancswallace@gmail.com
     install: bin.install "jobman"
+    install: |
+      bin.install "jobman"
+      man1.install Dir["docs/manpage/jobman.1"]
+      bash_completion.install "docs/completions/bash/jobman"
+      zsh_completion.install "docs/completions/zsh/jobman"
     test: |
       system "#{bin/jobman}"

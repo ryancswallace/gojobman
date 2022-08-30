@@ -267,6 +267,7 @@
     * man pages
     * inline comments
     * webpage
+        * link to download release
     * social preview image
     * testing
         * unit tests
@@ -287,6 +288,7 @@
             * go fmt
             * ineffassign100
             * misspell
+        * how to ensure hooks/* run by CI
         * deploy docs site
         * publish to Dockerhub, GH packages
         * releases (GoReleaser)
