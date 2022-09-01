@@ -32,7 +32,8 @@ checksum:
   name_template: '{{ .ProjectName }}_{{ .Version }}_checksums.txt'
 
 builds:
-  - goos:
+  - env: [CGO_ENABLED=1]
+    goos:
       - linux
       - darwin
       - windows
