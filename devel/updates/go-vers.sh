@@ -36,5 +36,3 @@ fi
 "$SED" -i "s/go_vers=.*/go_vers=$GO_VERS/g" Dockerfile
 "$SED" -i "s/^go .*/go $GO_VERS/g" go.mod
 "$SED" -i "s/go-version: .*/go-version: $GO_VERS/g" .github/workflows/*
-
-echo updated

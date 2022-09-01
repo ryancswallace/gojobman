@@ -62,7 +62,7 @@ format:
 
 .PHONY: update
 update:
-	@export GO_VERS=$(GO_VERSION) \
+	export GO_VERS=$(GO_VERSION) \
 	&& run-parts $(GEN_UPDATES)
 
 .PHONY: update-all
