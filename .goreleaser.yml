@@ -41,7 +41,7 @@ builds:
     goarch:
       - amd64
       - '386'
-      # - arm64  # TODO
+      - arm64
     main: ./main.go
     ldflags: -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
     binary: '{{ .ProjectName }}'
@@ -120,20 +120,21 @@ dockers:
       - --label=org.opencontainers.image.revision={{ .FullCommit }}
       - --label=org.opencontainers.image.licenses=MIT
 
-  # - image_templates: ["ghcr.io/ryancswallace/{{ .ProjectName }}:{{ .Version }}-arm64v8"]
-  #   goarch: arm64
-  #   dockerfile: Dockerfile
-  #   use: buildx
-  #   build_flag_templates:
-  #     - --platform=linux/arm64/v8
-  #     - --label=org.opencontainers.image.title={{ .ProjectName }}
-  #     - --label=org.opencontainers.image.description={{ .ProjectName }}
-  #     - --label=org.opencontainers.image.url=https://ryancswallace.github.io/{{ .ProjectName }}
-  #     - --label=org.opencontainers.image.source=https://github.com/ryancswallace/{{ .ProjectName }}
-  #     - --label=org.opencontainers.image.version={{ .Version }}
-  #     - --label=org.opencontainers.image.created={{ .Date }}
-  #     - --label=org.opencontainers.image.revision={{ .FullCommit }}
-  #     - --label=org.opencontainers.image.licenses=MIT
+  - image_templates: ["ghcr.io/ryancswallace/{{ .ProjectName }}:{{ .Version }}-arm64v8"]
+    goos: linux
+    goarch: arm64
+    dockerfile: Dockerfile
+    use: buildx
+    build_flag_templates:
+      - --platform=linux/arm64/v8
+      - --label=org.opencontainers.image.title={{ .ProjectName }}
+      - --label=org.opencontainers.image.description={{ .ProjectName }}
+      - --label=org.opencontainers.image.url=https://ryancswallace.github.io/{{ .ProjectName }}
+      - --label=org.opencontainers.image.source=https://github.com/ryancswallace/{{ .ProjectName }}
+      - --label=org.opencontainers.image.version={{ .Version }}
+      - --label=org.opencontainers.image.created={{ .Date }}
+      - --label=org.opencontainers.image.revision={{ .FullCommit }}
+      - --label=org.opencontainers.image.licenses=MIT
 
 docker_manifests:
   - name_template: ghcr.io/ryancswallace/{{ .ProjectName }}:{{ .Version }}
