@@ -78,7 +78,7 @@ nfpms:
         dst: /usr/share/man/man1
       - src: docs/completions/bash/jobman
         dst: /usr/share/bash-completion/completions/jobman
-      - src: docs/completions/zsh/jobman
+      - src: docs/completions/zsh/_jobman
         dst: /usr/share/zsh/vendor-completions/_jobman
 
 brews:
