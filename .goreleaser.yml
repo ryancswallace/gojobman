@@ -32,7 +32,9 @@ checksum:
   name_template: '{{ .ProjectName }}_{{ .Version }}_checksums.txt'
 
 builds:
-  - goos:
+  - env:
+      - CGO_ENABLED=0
+    goos:
       - linux
       - darwin
       - windows
@@ -42,7 +44,7 @@ builds:
       # - arm64  # TODO
     main: ./main.go
     ldflags: -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
-    binary: jobman
+    binary: '{{ .ProjectName }}'
 
 archives:
   - name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
@@ -103,6 +105,8 @@ brews:
 
 dockers:
   - image_templates: ["ghcr.io/ryancswallace/{{ .ProjectName }}:{{ .Version }}-amd64"]
+    goos: linux
+    goarch: amd64
     dockerfile: Dockerfile
     use: buildx
     build_flag_templates:
