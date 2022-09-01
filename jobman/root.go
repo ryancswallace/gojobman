@@ -13,6 +13,7 @@ import (
 
 var cfgFile string
 
+// JobmanRootCmd is root of the jobman command tree.
 var JobmanRootCmd = &cobra.Command{
 	Use:   "jobman",
 	Short: "A brief description of your application",

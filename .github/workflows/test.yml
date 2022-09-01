@@ -1,14 +1,15 @@
-name: Build
+name: Test
 
 on:
   push:
     branches: "*"
+  pull_request:
 
   workflow_dispatch:
 
 jobs:
-  build:
-    name: Build
+  test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,13 +25,21 @@ jobs:
       - name: Lint
         uses: golangci/golangci-lint-action@v2
 
-      - name: Test
+      - name: Unit tests
         run: |
           go test -v -race -cover -coverprofile=coverage.txt -covermode=atomic ./...
           bash <(curl -s https://codecov.io/bash) -s .
           cat coverage.txt
 
-      - name: Build
+      - name: End-to-end tests
+        run: |
+          true  # TODO: run tests/e2e/*
+
+      - name: Performance tests
+        run: |
+          true  # TODO: run tests/perf/*
+
+      - name: Test build
         run: |
           mkdir -p bin
           go build -o ./bin/ .

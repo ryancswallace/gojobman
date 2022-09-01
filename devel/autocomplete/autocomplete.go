@@ -1,10 +1,15 @@
 // Package autocomplete generates shell autocomplete scripts for jobman.
 package main
 
-import "fmt"
+import (
+	"os"
+)
 
 func genAutocomplete() {
-	fmt.Println("genAutocomplete")
+	// TODO: implement
+	os.Create("docs/completions/bash/jobman")
+	os.Create("docs/completions/powershell/jobman")
+	os.Create("docs/completions/zsh/_jobman")
 }
 
 func main() {
@@ -31,7 +36,7 @@ func main() {
 // 	if err != nil {
 // 		log.Fatal(err)
 // 	}
-// 	err = doc.GenManTree(rootcmd, header, manPath)
+// 	err = doc.GenManTree(JobmanRootCmd, header, manPath)
 // 	if err != nil {
 // 		log.Fatal(err)
 // 	}
@@ -167,7 +172,7 @@ func main() {
 // 	if err != nil {
 // 		log.Fatal(err)
 // 	}
-// 	err = doc.GenManTree(rootcmd, header, manPath)
+// 	err = doc.GenManTree(JobmanRootCmd, header, manPath)
 // 	if err != nil {
 // 		log.Fatal(err)
 // 	}

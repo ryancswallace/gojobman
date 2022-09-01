@@ -5,23 +5,6 @@ before:
     - go mod tidy
     - make gen-manpage gen-completions
 
-builds:
-  - goos:
-      - linux
-      - darwin
-      - windows
-    goarch:
-      - amd64
-      - "386"
-    main: ./main.go
-    ldflags: -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
-    binary: jobman
-
-snapshot:
-  name_template: SNAPSHOT-{{ .Commit }}
-checksum:
-  name_template: '{{ .ProjectName }}_{{ .Version }}_checksums.txt'
-
 signs:
   - cmd: gpg
     args:
@@ -37,29 +20,29 @@ changelog:
   filters:
     exclude:
       - '^assets:'
+      - '^devel:'
       - '^docs:'
-      - '^tests:'
+      - '^formula:'
       - '^site:'
+      - '^tests:'
 
-release:
-  github:
-    owner: ryancswallace
-    name: jobman
-  draft: true
-  prerelease: auto
-  discussion_category_name: General
-  header: |
-    ## Features
-    List of newly introduced features:
-    - Item 1
-    - Item 2
-    ## Bug fixes
-    List of fixed issues:
-    - Item 1
-    - Item 2
-  footer: |
-    ## Reference
-    Read more on the [jobman documentation site](https://ryancswallace.github.io/jobman) and [jobman page](https://pkg.go.dev/github.com/ryancswallace/jobman) in the Golang reference.
+snapshot:
+  name_template: SNAPSHOT-{{ .Commit }}
+checksum:
+  name_template: '{{ .ProjectName }}_{{ .Version }}_checksums.txt'
+
+builds:
+  - goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - '386'
+      - arm64
+    main: ./main.go
+    ldflags: -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
+    binary: jobman
 
 archives:
   - name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
@@ -117,3 +100,64 @@ brews:
       zsh_completion.install "docs/completions/zsh/jobman"
     test: |
       system "#{bin/jobman}"
+
+dockers:
+  - image_templates: ["ghcr.io/ryancswallace/{{ .ProjectName }}:{{ .Version }}-amd64"]
+    dockerfile: Dockerfile
+    use: buildx
+    build_flag_templates:
+      - --platform=linux/amd64
+      - --label=org.opencontainers.image.title={{ .ProjectName }}
+      - --label=org.opencontainers.image.description={{ .ProjectName }}
+      - --label=org.opencontainers.image.url=https://ryancswallace.github.io/{{ .ProjectName }}
+      - --label=org.opencontainers.image.source=https://github.com/ryancswallace/{{ .ProjectName }}
+      - --label=org.opencontainers.image.version={{ .Version }}
+      - --label=org.opencontainers.image.created={{ .Date }}
+      - --label=org.opencontainers.image.revision={{ .FullCommit }}
+      - --label=org.opencontainers.image.licenses=MIT
+
+  - image_templates: ["ghcr.io/ryancswallace/{{ .ProjectName }}:{{ .Version }}-arm64v8"]
+    goarch: arm64
+    dockerfile: Dockerfile
+    use: buildx
+    build_flag_templates:
+      - --platform=linux/arm64/v8
+      - --label=org.opencontainers.image.title={{ .ProjectName }}
+      - --label=org.opencontainers.image.description={{ .ProjectName }}
+      - --label=org.opencontainers.image.url=https://ryancswallace.github.io/{{ .ProjectName }}
+      - --label=org.opencontainers.image.source=https://github.com/ryancswallace/{{ .ProjectName }}
+      - --label=org.opencontainers.image.version={{ .Version }}
+      - --label=org.opencontainers.image.created={{ .Date }}
+      - --label=org.opencontainers.image.revision={{ .FullCommit }}
+      - --label=org.opencontainers.image.licenses=MIT
+
+docker_manifests:
+  - name_template: ghcr.io/ryancswallace/{{ .ProjectName }}:{{ .Version }}
+    image_templates:
+      - ghcr.io/ryancswallace/{{ .ProjectName }}:{{ .Version }}-amd64
+      - ghcr.io/ryancswallace/{{ .ProjectName }}:{{ .Version }}-arm64v8
+
+  - name_template: ghcr.io/ryancswallace/{{ .ProjectName }}:latest
+    image_templates:
+      - ghcr.io/ryancswallace/{{ .ProjectName }}:{{ .Version }}-amd64
+      - ghcr.io/ryancswallace/{{ .ProjectName }}:{{ .Version }}-arm64v8
+
+release:
+  github:
+    owner: ryancswallace
+    name: jobman
+  draft: true
+  prerelease: auto
+  discussion_category_name: General
+  header: |
+    ## Features
+    List of newly introduced features:
+    - Item 1
+    - Item 2
+    ## Bug fixes
+    List of fixed issues:
+    - Item 1
+    - Item 2
+  footer: |
+    ## Reference
+    Read more on the [jobman documentation site](https://ryancswallace.github.io/jobman) and [jobman page](https://pkg.go.dev/github.com/ryancswallace/jobman) in the Golang reference.

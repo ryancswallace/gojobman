@@ -1,12 +1,19 @@
 PROJECT = jobman
 
+# output paths
 BIN = ./bin
-HOOKS = ./hooks
 DOCS = ./docs
 MANPAGE = $(DOCS)/manpage
 COMPLETIONS = $(DOCS)/completions
 COVREPORT = coverage.txt
 
+# source code paths
+DEVEL = ./devel
+GEN_UPDATES = $(DEVEL)/updates
+GEN_MANPAGE = $(DEVEL)/manpages/manpages.go
+GEN_COMPLETIONS = $(DEVEL)/autocomplete/autocomplete.go
+
+# executables
 GO = go
 LINTER = golangci-lint
 DOCKER = docker
@@ -17,6 +24,7 @@ all: format update-all test build-all install
 
 ###
 ### Testing
+### These targets execute tests and linters against the source code
 ###
 .PHONY: unittest
 unittest:
@@ -42,6 +50,42 @@ lint: $(BIN)/$(LINTER)
 test: unittest e2etest perftest lint
 
 ###
+### Autoformatting and updating
+### These targets edit files tracked in the source code repository
+###
+.PHONY: format
+format:
+	$(GO) fmt
+
+.PHONY: update
+update:
+	run-parts $(GEN_UPDATES)
+
+.PHONY: update-all
+update-all: format update
+
+###
+### Autogeneration
+### These targets generate files *not* tracked in the source code repository
+###
+$(MANPAGE):
+	mkdir -p $@
+
+.PHONY: gen-manpage
+gen-manpage: $(MANPAGE)
+	$(GO) run $(GEN_MANPAGE)
+
+.PHONY: gen-completions
+gen-completions:
+	for CMPSHELL in bash zsh powershell; do \
+		mkdir -p $(COMPLETIONS)/$$CMPSHELL \
+		&& $(GO) run $(GEN_COMPLETIONS); \
+	done
+
+.PHONY: gen-all
+gen-all: gen-manpage gen-completions
+
+###
 ### Building
 ###
 .PHONY: build
@@ -60,37 +104,6 @@ build-all: build docker-image
 .PHONY: install
 install:
 	$(GO) install
-
-###
-### Autoformatting and updating
-###
-.PHONY: format
-format:
-	$(GO) fmt
-
-.PHONY: update-all
-update-all:
-	run-parts $(HOOKS)
-
-###
-### Autogeneration
-###
-$(MANPAGE):
-	mkdir -p $@
-
-.PHONY: gen-manpage
-gen-manpage: $(MANPAGE)
-	$(GO) run devel/manpages/manpages.go
-
-.PHONY: gen-completions
-gen-completions:
-	for CMPSHELL in bash zsh powershell; do \
-		mkdir -p $(COMPLETIONS)/$$CMPSHELL \
-		&& $(GO) run devel/autocomplete/autocomplete.go; \
-	done
-
-.PHONY: gen-all
-gen-all: gen-manpage gen-completions
 
 ###
 ### Cleanup
