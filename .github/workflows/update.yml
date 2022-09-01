@@ -1,0 +1,20 @@
+name: Update
+
+on:
+  schedule:
+    # daily at 5:03 (randomly selected)
+    - cron: '03 05 * * *'
+
+  workflow_dispatch:
+
+jobs:
+  update:
+    name: Copyright date
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+    # TODO: commit changes with action https://github.com/peter-evans/create-pull-request
