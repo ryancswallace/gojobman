@@ -44,7 +44,9 @@ builds:
       - '386'
       - arm64
     ignore:
-      - goos: linux
+      - goos:
+          - linux
+          - windows
         goarch: arm64
     main: ./main.go
     ldflags: -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
