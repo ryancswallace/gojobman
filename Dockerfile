@@ -25,4 +25,4 @@ RUN apk update
 
 ENTRYPOINT ["/bin/sh"]
 
-COPY dist/jobman_linux_amd64_v1/jobman /usr/bin/jobman
+COPY jobman /usr/bin/jobman
