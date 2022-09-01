@@ -28,6 +28,7 @@ changelog:
 
 snapshot:
   name_template: SNAPSHOT-{{ .Commit }}
+
 checksum:
   name_template: '{{ .ProjectName }}_{{ .Version }}_checksums.txt'
 

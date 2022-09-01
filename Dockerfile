@@ -1,7 +1,9 @@
 # TODO: add support for local builds in addition to GoReleaser "copies"
-# TODO: include supporting files (e.g., config, man, completions)
+# TODO: include supporting files (e.g., config, man, completions
 
-# FROM golang:1.15-alpine as build
+# ARG go_vers=1.16
+
+# FROM golang:${go_vers}-alpine as build
 
 # RUN apk update && apk add build-base
 

@@ -18,6 +18,9 @@ GO = go
 LINTER = golangci-lint
 DOCKER = docker
 
+# versions
+GO_VERSION := $(shell cat go.version)
+
 
 .PHONY: all
 all: format update-all test build-all install
@@ -59,7 +62,8 @@ format:
 
 .PHONY: update
 update:
-	run-parts $(GEN_UPDATES)
+	@export GO_VERS=$(GO_VERSION) \
+	&& run-parts $(GEN_UPDATES)
 
 .PHONY: update-all
 update-all: format update

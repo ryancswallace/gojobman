@@ -17,4 +17,8 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Run all update scripts
+        run: |
+          make update-all
+
     # TODO: commit changes with action https://github.com/peter-evans/create-pull-request
