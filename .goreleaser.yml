@@ -126,13 +126,13 @@ dockers:
       - --label=org.opencontainers.image.revision={{ .FullCommit }}
       - --label=org.opencontainers.image.licenses=MIT
 
-  - image_templates: ["ghcr.io/ryancswallace/{{ .ProjectName }}:{{ .Version }}-arm64v8"]
+  - image_templates: ["ghcr.io/ryancswallace/{{ .ProjectName }}:{{ .Version }}-i386"]
     goos: linux
-    goarch: arm64
+    goarch: 386
     dockerfile: Dockerfile
     use: buildx
     build_flag_templates:
-      - --platform=linux/arm64/v8
+      - --platform=linux/i386
       - --label=org.opencontainers.image.title={{ .ProjectName }}
       - --label=org.opencontainers.image.description={{ .ProjectName }}
       - --label=org.opencontainers.image.url=https://ryancswallace.github.io/{{ .ProjectName }}
