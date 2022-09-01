@@ -23,6 +23,6 @@ FROM alpine:3.12
 
 RUN apk update
 
-COPY jobman /usr/bin/jobman
-
 ENTRYPOINT ["/bin/sh"]
+
+COPY dist/jobman_linux_amd64_v1/jobman /usr/bin/jobman
