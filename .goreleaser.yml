@@ -166,7 +166,6 @@ release:
     - glob: ./etc/jobman/jobman.yml
     - glob: ./docs/manpage/jobman*.1
     - glob: ./docs/completions/bash/jobman
-      name_template: jobman-bash-completions
   header: |
     ## Features
     List of newly introduced features:
