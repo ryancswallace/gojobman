@@ -2,19 +2,17 @@ name: Release
 
 on:
   workflow_run:
-    workflows: ["tests"]
+    workflows:
+      - "tests"
     branches:
       - "main"
     types:
       - completed
 
-  push:
-    branches:
-      - "main"
-
-  pull_request:
-    branches:
-      - "main"
+  on:
+    push:
+      tags:
+        - v**
 
   workflow_dispatch:
 

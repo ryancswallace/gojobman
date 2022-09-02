@@ -165,7 +165,6 @@ release:
   extra_files:
     - glob: ./etc/jobman/jobman.yml
     - glob: ./docs/manpage/jobman*.1
-    - glob: ./docs/completions/bash/jobman
   header: |
     ## Features
     List of newly introduced features:

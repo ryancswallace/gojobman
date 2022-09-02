@@ -2,7 +2,7 @@ name: Update
 
 on:
   schedule:
-    # daily at 5:03 (randomly selected)
+    # daily at 5:03 (avoid GH load spikes on the hour)
     - cron: '03 05 * * *'
 
   workflow_dispatch:
@@ -25,3 +25,4 @@ jobs:
     # if changes...
     # commit changes on new branch b
     # create pull request for b -> main (e.g., https://github.com/peter-evans/create-pull-request)
+    # merge pull request

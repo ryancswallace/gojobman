@@ -5,6 +5,11 @@ on:
     branches: "*"
 
   pull_request:
+    types:
+      - opened
+      - reopened
+      - edited
+      - synchronize
 
   workflow_dispatch:
 
