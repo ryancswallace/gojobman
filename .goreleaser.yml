@@ -167,10 +167,6 @@ release:
     - glob: ./docs/manpage/jobman*.1
     - glob: ./docs/completions/bash/jobman
       name_template: jobman-bash-completions
-    - glob: ./docs/completions/zsh/_jobman
-      name_template: jobman-zsh-completions
-    - glob: ./docs/completions/powershell/jobman
-      name_template: jobman-powershell-completions
   header: |
     ## Features
     List of newly introduced features:
