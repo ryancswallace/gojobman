@@ -21,4 +21,7 @@ jobs:
         run: |
           make update-all
 
-    # TODO: commit changes with action https://github.com/peter-evans/create-pull-request
+    # TODO:
+    # if changes...
+    # commit changes on new branch b
+    # create pull request for b -> main (e.g., https://github.com/peter-evans/create-pull-request)
