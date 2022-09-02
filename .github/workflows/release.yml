@@ -9,10 +9,9 @@ on:
     types:
       - completed
 
-  on:
-    push:
-      tags:
-        - v**
+  push:
+    tags:
+      - v**
 
   workflow_dispatch:
 
