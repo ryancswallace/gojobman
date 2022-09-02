@@ -26,6 +26,8 @@ concurrency:
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
+    env:
+      DOCKER_CLI_EXPERIMENTAL: "enabled"
     steps:
       - name: Wait for tests to succeed
         uses: lewagon/wait-on-check-action@v1.0.0
