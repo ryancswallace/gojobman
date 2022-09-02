@@ -146,12 +146,12 @@ docker_manifests:
   - name_template: ghcr.io/ryancswallace/{{ .ProjectName }}:{{ .Version }}
     image_templates:
       - ghcr.io/ryancswallace/{{ .ProjectName }}:{{ .Version }}-amd64
-      - ghcr.io/ryancswallace/{{ .ProjectName }}:{{ .Version }}-arm64v8
+      - ghcr.io/ryancswallace/{{ .ProjectName }}:{{ .Version }}-i386
 
   - name_template: ghcr.io/ryancswallace/{{ .ProjectName }}:latest
     image_templates:
       - ghcr.io/ryancswallace/{{ .ProjectName }}:{{ .Version }}-amd64
-      - ghcr.io/ryancswallace/{{ .ProjectName }}:{{ .Version }}-arm64v8
+      - ghcr.io/ryancswallace/{{ .ProjectName }}:{{ .Version }}-i386
 
 release:
   github:
