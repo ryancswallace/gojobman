@@ -307,6 +307,16 @@
             ```
 
 
+
+Conventional commit messages (CONTRIBUTING.md)
+Draft release from push/merge to main
+Require reviewers
+Codeql
+Automated method to bump jobman version
+Combine or make dep between build and release actions 
+Twitter
+
+
 * `.db/`
     * `index/`
     * `data/`
